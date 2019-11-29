@@ -25,7 +25,7 @@ class Stack:
 class Solution:
     def __init__(self):
         self.types = set(['()', '{}', '[]'])
-        self.close_brackets = (')', '}', ']')
+        self.close_brackets = set([')', '}', ']'])
         self.stack = Stack()
 
     def isValid(self, s):
