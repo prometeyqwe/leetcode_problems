@@ -1,19 +1,12 @@
-def group_anagrams(strs):
-    result = []
-    result_hash = []
-    for _str in strs:
-        str_hash = dict()
-        for _char in _str:
-            str_hash[_char] = 1 + str_hash.get(_char, 0)
-        for i in range(len(result_hash)):
-            if str_hash == result_hash[i]:
-                result[i].append(_str)
-                break
-        else:
-            result_hash.append(str_hash)
-            result.append([_str])
+from collections import defaultdict, Counter
 
-    return result
+
+def group_anagrams(strs):
+    result_hash = defaultdict(list)
+    for _str in strs:
+        result_hash[frozenset(Counter(_str).items())].append(_str)
+
+    return list(result_hash.values())
 
 
 if __name__ == '__main__':
